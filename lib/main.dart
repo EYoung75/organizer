@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(
@@ -13,6 +14,28 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Organizer',
       theme: ThemeData(
+        textTheme: TextTheme(
+          headline1: GoogleFonts.charm(
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
+            color: Colors.black,
+            shadows: [
+              Shadow(
+                  color: Color.fromRGBO(0, 0, 0, .6),
+                  blurRadius: 10,
+                  offset: Offset.fromDirection(10.0))
+            ],
+          ),
+          bodyText2: GoogleFonts.charm(
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
+            color: Colors.black,
+          ),
+          bodyText1: GoogleFonts.oswald(
+            fontSize: 18,
+            color: Colors.black,
+          ),
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Home(),
@@ -31,6 +54,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       drawer: Drawer(),
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Color.fromRGBO(186, 24, 32, 1),
         actions: [
           IconButton(
             onPressed: () {},
@@ -38,7 +63,11 @@ class _HomeState extends State<Home> {
           ),
         ],
         title: Text(
-          "Organizer",
+          "Flutter",
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(color: Colors.white, fontSize: 28),
         ),
       ),
       body: Container(
@@ -46,7 +75,7 @@ class _HomeState extends State<Home> {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              "images/dotted-grid.jpg",
+              "images/grid.png",
             ),
           ),
         ),
@@ -79,16 +108,45 @@ class PageOne extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                color: Colors.black,
-                spreadRadius: 0,
-              ),
-            ], color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Colors.black,
+                  spreadRadius: 10,
+                ),
+              ],
+              color: Color.fromRGBO(233, 225, 218, 1),
+              borderRadius: BorderRadius.circular(5),
+            ),
             margin: EdgeInsets.symmetric(horizontal: 20),
             height: 500,
             width: double.infinity,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Mind Map",
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: 150,
+                    child: Image.asset(
+                      "images/brain.png",
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                    child: Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget porta odio, sit amet vestibulum sem. Aliquam pellentesque arcu sit amet magna ornare, vitae pellentesque nibh scelerisque. Integer rutrum, nisl sit amet eleifend placerat.",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -104,16 +162,45 @@ class PageTwo extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                color: Colors.black,
-                spreadRadius: 0,
-              ),
-            ], color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Colors.black,
+                  spreadRadius: 10,
+                ),
+              ],
+              color: Color.fromRGBO(233, 225, 218, 1),
+              borderRadius: BorderRadius.circular(5),
+            ),
             margin: EdgeInsets.symmetric(horizontal: 20),
             height: 500,
             width: double.infinity,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Mooring",
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: 150,
+                    child: Image.asset(
+                      "images/anchor.png",
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                    child: Text(
+                      "Curabitur sit amet vehicula tellus. Duis congue finibus neque sit amet suscipit. Maecenas eu odio semper, pretium lacus sed, ultricies nulla",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -129,16 +216,45 @@ class PageThree extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(boxShadow: [
-              BoxShadow(
-                blurRadius: 10,
-                color: Colors.black,
-                spreadRadius: 0,
-              ),
-            ], color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Colors.black,
+                  spreadRadius: 10,
+                ),
+              ],
+              color: Color.fromRGBO(233, 225, 218, 1),
+              borderRadius: BorderRadius.circular(5),
+            ),
             margin: EdgeInsets.symmetric(horizontal: 20),
             height: 500,
             width: double.infinity,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Solidify",
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    height: 150,
+                    child: Image.asset(
+                      "images/dragonfly.png",
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                    child: Text(
+                      "In tempor tellus et magna ultrices fermentum ut vel risus. Proin ultrices porttitor eros vel tristique. Vivamus luctus tellus odio, vitae pellentesque libero fermentum accumsan.",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
         ],
       ),
