@@ -50,17 +50,23 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-        height: double.infinity,
         width: double.infinity,
-        child: PageView(
-          controller: PageController(initialPage: 0),
-          children: [
-            PageOne(),
-            PageTwo(),
-            PageThree(),
-          ],
-        ),
+        child: PageContainer(),
       ),
+    );
+  }
+}
+
+class PageContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      controller: PageController(initialPage: 0),
+      children: [
+        PageOne(),
+        PageTwo(),
+        PageThree(),
+      ],
     );
   }
 }
@@ -69,10 +75,23 @@ class PageOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.red,
-      child: Center(child: Text("Page One")),
-      height: double.infinity,
-      width: double.infinity,
+      margin: EdgeInsets.symmetric(vertical: 100),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                blurRadius: 10,
+                color: Colors.black,
+                spreadRadius: 0,
+              ),
+            ], color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            height: 500,
+            width: double.infinity,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -81,10 +100,23 @@ class PageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
-      child: Center(child: Text("Page Two")),
-      height: 500,
-      width: double.infinity,
+      margin: EdgeInsets.symmetric(vertical: 100),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                blurRadius: 10,
+                color: Colors.black,
+                spreadRadius: 0,
+              ),
+            ], color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            height: 500,
+            width: double.infinity,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -93,10 +125,23 @@ class PageThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.yellow,
-      child: Center(child: Text("Page Three")),
-      height: 500,
-      width: double.infinity,
+      margin: EdgeInsets.symmetric(vertical: 100),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                blurRadius: 10,
+                color: Colors.black,
+                spreadRadius: 0,
+              ),
+            ], color: Colors.red, borderRadius: BorderRadius.circular(5)),
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            height: 500,
+            width: double.infinity,
+          ),
+        ],
+      ),
     );
   }
 }
