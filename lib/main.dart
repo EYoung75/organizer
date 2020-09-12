@@ -20,61 +20,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      elevation: 8,
-      semanticLabel: "App Drawer",
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("/images/grid.png"), fit: BoxFit.cover),
-        ),
-        child: (ListView(
-          children: <Widget>[
-            DrawerHeader(
-              padding: EdgeInsets.all(0),
-              child: Container(
-                alignment: Alignment.center,
-                color: Color.fromRGBO(186, 24, 32, 1),
-                child: ListTile(
-                  title: Text(
-                    "Evan Young",
-                    style: Theme.of(context).textTheme.title.copyWith(
-                      shadows: <Shadow>[
-                        Shadow(
-                          offset: Offset(1, 3.0),
-                          blurRadius: 7.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.deepOrange,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 10,
-                    spreadRadius: 0,
-                    offset: Offset(
-                      0,
-                      1,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        )),
-      ),
-    );
-  }
-}
-
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -94,22 +39,76 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.perm_identity),
           ),
         ],
-        title: Text(
-          "Flutter",
-          style: titletext
-        ),
+        title: Text("Flutter", style: titletext),
+      ),
+      bottomSheet: Container(
+        height: 75,
+        color: red,
+        width: double.infinity,
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage(
-              "images/grid.png",
-            ),
+            image: gridPaper,
           ),
         ),
         width: double.infinity,
         child: PageContainer(),
+      ),
+    );
+  }
+}
+
+class HomeDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      elevation: 8,
+      semanticLabel: "App Drawer",
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: gridPaper, fit: BoxFit.cover),
+        ),
+        child: (ListView(
+          children: <Widget>[
+            DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: Container(
+                alignment: Alignment.center,
+                color: red,
+                child: ListTile(
+                  title: Text(
+                    "Evan Young",
+                    style: titletext,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 150,
+              margin: EdgeInsets.symmetric(vertical: 50),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    "Item 1",
+                    style: subtitleText,
+                  ),
+                  Text(
+                    "Item 2",
+                    style: subtitleText,
+                  ),
+                  Text(
+                    "Item 3",
+                    style: subtitleText,
+                  ),
+                ],
+              ),
+            )
+          ],
+        )),
       ),
     );
   }
