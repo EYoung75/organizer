@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './pageCard.dart';
@@ -29,8 +30,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: HomeDrawer(),
+      // drawer: HomeDrawer(),
       appBar: AppBar(
+        elevation: 20,
+        centerTitle: false,
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: red,
         actions: [
@@ -39,12 +42,25 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.perm_identity),
           ),
         ],
-        title: Text("Flutter", style: titletext),
+        title: Text("Menu", style: titletext),
       ),
       bottomSheet: Container(
-        height: 75,
-        color: red,
+        decoration: BoxDecoration(
+          color: red,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black,
+              offset: Offset(0, -2),
+              spreadRadius: 2,
+              blurRadius: 50,
+            ),
+          ],
+        ),
+        height: 50,
         width: double.infinity,
+        child: Center(
+          child: Text(""),
+        ),
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -68,8 +84,8 @@ class HomeDrawer extends StatelessWidget {
       semanticLabel: "App Drawer",
       child: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(image: gridPaper, fit: BoxFit.cover),
-        ),
+            // image: DecorationImage(image: gridPaper, fit: BoxFit.cover),
+            color: bone),
         child: (ListView(
           children: <Widget>[
             DrawerHeader(
@@ -115,27 +131,60 @@ class HomeDrawer extends StatelessWidget {
 }
 
 class PageContainer extends StatelessWidget {
+  final List items = [
+    {
+      'title': 'Mind Map',
+      'image': 'images/brain.png',
+      'description':
+          'Duis elementum eu neque ut pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam in ex eget congue. Nunc arcu dui, pharetra sit amet lacinia non, ullamcorper eu ante.',
+    },
+    {
+      'title': 'Mooring',
+      'image': 'images/anchor.png',
+      'description':
+          'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc interdum porta porttitor. Donec sollicitudin fringilla nibh, eu aliquam neque scelerisque volutpat. Praesent suscipit orci quis ante pharetra malesuada vitae sit amet sapien. ',
+    },
+    {
+      'title': 'Solidify',
+      'image': 'images/dragonfly.png',
+      'description':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non diam vel velit ullamcorper finibus vitae vel sapien. Phasellus ac risus aliquam, mollis felis vitae, pulvinar lacus.',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: PageController(initialPage: 0),
-      children: [
-        PageCard(
-          'Mind Map',
-          'images/brain.png',
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non diam vel velit ullamcorper finibus vitae vel sapien. Phasellus ac risus aliquam, mollis felis vitae, pulvinar lacus.',
-        ),
-        PageCard(
-          'Mooring',
-          'images/anchor.png',
-          'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc interdum porta porttitor. Donec sollicitudin fringilla nibh, eu aliquam neque scelerisque volutpat. Praesent suscipit orci quis ante pharetra malesuada vitae sit amet sapien. ',
-        ),
-        PageCard(
-          'Solidify',
-          'images/dragonfly.png',
-          'Duis elementum eu neque ut pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam in ex eget congue. Nunc arcu dui, pharetra sit amet lacinia non, ullamcorper eu ante.',
-        ),
-      ],
+    return Container(
+      child: PageView.builder(
+        itemBuilder: (ctx, i) {
+          return PageCard(
+            items[i],
+          );
+        },
+        itemCount: items.length,
+      ),
+      // child: PageView(
+      //   onPageChanged: setPage(),
+      //   controller: PageController(
+      //     initialPage: 0,
+      //   ),
+      //   children: [
+      //     PageCard(
+      // 'Mind Map',
+      // 'images/brain.png',
+      // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non diam vel velit ullamcorper finibus vitae vel sapien. Phasellus ac risus aliquam, mollis felis vitae, pulvinar lacus.',
+      //     ),
+      //     PageCard(
+      // 'Mooring',
+      // 'images/anchor.png',
+      // 'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc interdum porta porttitor. Donec sollicitudin fringilla nibh, eu aliquam neque scelerisque volutpat. Praesent suscipit orci quis ante pharetra malesuada vitae sit amet sapien. ',
+      //     ),
+      //     PageCard(
+      //       'Solidify',
+      //       'images/dragonfly.png',
+      // 'Duis elementum eu neque ut pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam in ex eget congue. Nunc arcu dui, pharetra sit amet lacinia non, ullamcorper eu ante.',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

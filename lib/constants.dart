@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const red = Color.fromRGBO(186, 24, 32, 1);
-const bone = Color.fromRGBO(239, 232, 214, 1);
+const bone = Color.fromRGBO(233, 225, 218, 1);
+const gold = Color.fromRGBO(222, 184, 114, 1);
+
+// bone alt = 239, 232, 214;
 
 dynamic titletext = GoogleFonts.oswald(
   fontSize: 30,
@@ -24,7 +27,7 @@ dynamic subtitleText = GoogleFonts.oswald(
 );
 
 dynamic paragraphBlack = GoogleFonts.oswald(
-  fontSize: 20,
+  fontSize: 16,
   color: Colors.black,
 );
 
