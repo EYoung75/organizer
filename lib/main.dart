@@ -133,19 +133,22 @@ class HomeDrawer extends StatelessWidget {
 class PageContainer extends StatelessWidget {
   final List items = [
     {
-      'title': 'Mind Map',
+      'title': 'Chronologies',
+      'subtitle': 'Keep track of your inner musings',
       'image': 'images/brain.png',
       'description':
-          'Duis elementum eu neque ut pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam in ex eget congue. Nunc arcu dui, pharetra sit amet lacinia non, ullamcorper eu ante.',
+          'Chronicle your daily thoughts for future reconciliation here.',
     },
     {
       'title': 'Mooring',
+      'subtitle': 'Anchor your ambitions and center your being',
       'image': 'images/anchor.png',
       'description':
-          'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc interdum porta porttitor. Donec sollicitudin fringilla nibh, eu aliquam neque scelerisque volutpat. Praesent suscipit orci quis ante pharetra malesuada vitae sit amet sapien. ',
+          'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc plantar vidi nosculantus.',
     },
     {
       'title': 'Solidify',
+      'subtitle': '',
       'image': 'images/dragonfly.png',
       'description':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non diam vel velit ullamcorper finibus vitae vel sapien. Phasellus ac risus aliquam, mollis felis vitae, pulvinar lacus.',
@@ -155,6 +158,7 @@ class PageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: PageView.builder(
+        // pageSnapping: false,
         itemBuilder: (ctx, i) {
           return PageCard(
             items[i],
@@ -162,29 +166,6 @@ class PageContainer extends StatelessWidget {
         },
         itemCount: items.length,
       ),
-      // child: PageView(
-      //   onPageChanged: setPage(),
-      //   controller: PageController(
-      //     initialPage: 0,
-      //   ),
-      //   children: [
-      //     PageCard(
-      // 'Mind Map',
-      // 'images/brain.png',
-      // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non diam vel velit ullamcorper finibus vitae vel sapien. Phasellus ac risus aliquam, mollis felis vitae, pulvinar lacus.',
-      //     ),
-      //     PageCard(
-      // 'Mooring',
-      // 'images/anchor.png',
-      // 'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc interdum porta porttitor. Donec sollicitudin fringilla nibh, eu aliquam neque scelerisque volutpat. Praesent suscipit orci quis ante pharetra malesuada vitae sit amet sapien. ',
-      //     ),
-      //     PageCard(
-      //       'Solidify',
-      //       'images/dragonfly.png',
-      // 'Duis elementum eu neque ut pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam in ex eget congue. Nunc arcu dui, pharetra sit amet lacinia non, ullamcorper eu ante.',
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

@@ -3,12 +3,6 @@ import './constants.dart';
 import './pages/mindMap.dart';
 
 class PageCard extends StatelessWidget {
-  // final String title;
-  // final String image;
-  // final String description;
-
-  // PageCard([this.title, this.image, this.description]);
-
   final itemData;
 
   PageCard(this.itemData);
@@ -42,18 +36,23 @@ class PageCard extends StatelessWidget {
                   color: red,
                   width: 1,
                 ),
-                color: bone,
+                // color: bone,
+                image: DecorationImage(
+                  image: AssetImage('images/paper.jpg'),
+                  fit: BoxFit.cover,
+                ),
                 borderRadius: BorderRadius.circular(5),
               ),
               margin: EdgeInsets.symmetric(horizontal: 30),
-              padding: EdgeInsets.symmetric(vertical: 20),
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 25,),
               width: double.infinity,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "subtitle lorem ipsum dolar something",
+                      itemData['subtitle'],
+                      textAlign: TextAlign.center,
                       style: paragraphGray,
                     ),
                     Text(
