@@ -1,8 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:organizer/pages/journalScreen.dart';
 import './pageCard.dart';
 import './constants.dart';
+import "./pages/journalScreen.dart";
+import './pages/trackerScreen.dart';
+import './pages/organizerScreen.dart';
+import "package:http/http.dart" as http;
+import 'dart:convert';
 
 void main() {
   runApp(
@@ -17,6 +23,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Organizer',
       home: Home(),
+      initialRoute: "/",
+      routes: {
+        '/journal': (ctx) => JournalScreen(),
+        '/tracker': (ctx) => TrackerScreen(),
+        '/organizer': (ctx) => OrganizerScreen(),
+      },
     );
   }
 }
@@ -27,6 +39,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String affirmation;
+
+  Future getQuote() async {
+    dynamic response = await http
+        .get("https://www.affirmations.dev/")
+        .then((res) => json.decode(res.body));
+    setState(() {
+      affirmation = response["affirmation"];
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.getQuote();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,10 +85,15 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        height: 50,
+        height: 100,
         width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Center(
-          child: Text(""),
+          child: Text(
+            affirmation == null ? "" : '"' + affirmation + '"',
+            style: paragraphBlack.copyWith(color: Colors.white, fontStyle: FontStyle.italic),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
       body: Container(
@@ -84,8 +118,9 @@ class HomeDrawer extends StatelessWidget {
       semanticLabel: "App Drawer",
       child: Container(
         decoration: BoxDecoration(
-            // image: DecorationImage(image: gridPaper, fit: BoxFit.cover),
-            color: bone),
+          // image: DecorationImage(image: gridPaper, fit: BoxFit.cover),
+          color: bone,
+        ),
         child: (ListView(
           children: <Widget>[
             DrawerHeader(
@@ -133,25 +168,27 @@ class HomeDrawer extends StatelessWidget {
 class PageContainer extends StatelessWidget {
   final List items = [
     {
-      'title': 'Chronologies',
-      'subtitle': 'Keep track of your inner musings',
+      'title': 'Journal',
+      'subtitle': 'Document your inner musings',
       'image': 'images/brain.png',
       'description':
           'Chronicle your daily thoughts for future reconciliation here.',
+      'route': '/journal'
     },
     {
-      'title': 'Mooring',
-      'subtitle': 'Anchor your ambitions and center your being',
+      'title': 'Goal Tracker',
+      'subtitle': 'Better yourself',
       'image': 'images/anchor.png',
       'description':
-          'Nulla volutpat vulputate elit ut lobortis. Phasellus aliquet nunc plantar vidi nosculantus.',
+          'Log progress towards your goals, both short and long term',
+      'route': '/tracker'
     },
     {
-      'title': 'Solidify',
-      'subtitle': '',
+      'title': 'Organizer',
+      'subtitle': 'Reminders for the important stuff',
       'image': 'images/dragonfly.png',
-      'description':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non diam vel velit ullamcorper finibus vitae vel sapien. Phasellus ac risus aliquam, mollis felis vitae, pulvinar lacus.',
+      'description': "To-do's and lists tracker to keep you organized",
+      'route': 'organizer'
     },
   ];
   @override

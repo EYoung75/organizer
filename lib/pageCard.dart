@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import './constants.dart';
-import './pages/mindMap.dart';
 
 class PageCard extends StatelessWidget {
   final itemData;
@@ -11,13 +10,7 @@ class PageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return MindMapScreen(itemData['title']);
-            },
-          ),
-        );
+          Navigator.pushNamed(context, itemData['route']);
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 50),
@@ -73,6 +66,7 @@ class PageCard extends StatelessWidget {
                       child: Text(
                         itemData['description'],
                         style: paragraphBlack,
+                        textAlign: TextAlign.center,
                       ),
                     )
                   ],
